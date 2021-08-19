@@ -3,7 +3,8 @@
   padding: 20px;
   width: 210px;
   border-radius: 40px;
-  margin-right: 30px;
+  margin: 0 15px 30px 15px;
+  flex: 1 0 21%;
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 
   &:hover {
@@ -13,6 +14,10 @@
 
   .favorite {
     position: absolute;
+    cursor: pointer;
+  }
+
+  .plus {
     cursor: pointer;
   }
 
