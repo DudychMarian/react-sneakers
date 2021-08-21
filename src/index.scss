@@ -1,15 +1,16 @@
 body {
   margin: 0;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #E7F6FF;
+  background-color: #e7f6ff;
 }
 
 * {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', system-ui;
 }
 
 .wrapper {
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
   max-width: 1080px;
@@ -35,10 +36,48 @@ header {
   }
 }
 
+.cartEmpty {
+  text-align: center;
+
+  p {
+    width: 280px;
+    line-height: 24px;
+  }
+
+  .greenButton {
+    width: 245px;
+    margin-top: 20px;
+
+    &:hover {
+      img {
+        transform: rotate(180deg) translateX(3px);
+      }
+    }
+
+    img {
+      position: relative;
+      top: 1px;
+      transform: rotate(180deg);
+      margin-right: 15px;
+      transition: transform 0.15s ease-in-out;
+    }
+  }
+}
+
 .search-block {
   border: 1px solid #f3f3f3;
   border-radius: 10px;
   padding: 0 15px;
+  position: relative;
+
+  .clear {
+    position: absolute;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    top: 14px;
+    right: 15px;
+  }
 
   input {
     border: 0;
@@ -65,25 +104,25 @@ header {
   width: 420px;
   height: 100%;
   right: 0;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
   padding: 30px;
+
+  .items {
+    flex: 1;
+    overflow: auto;
+    margin-bottom: 40px;
+  }
 
   h2 {
     margin: 0;
   }
 }
 
-.items {
-  flex: 1;
-  overflow: auto;
-  margin-bottom: 40px;
-}
-
 .cartTotalBlock {
-  ul{
+  ul {
     display: block;
-    margin-bottom: 20px !important;
+    margin-bottom: 40px !important;
 
     li {
       display: flex;
@@ -97,7 +136,6 @@ header {
         position: relative;
         top: -4px;
         margin: 0 7px;
-
       }
     }
   }
@@ -106,11 +144,10 @@ header {
     position: relative;
 
     &:hover {
-      img{
+      img {
         transform: translateX(5px);
       }
     }
-    
 
     img {
       position: absolute;
@@ -118,28 +155,27 @@ header {
       top: 20px;
       transition: transform 0.15s ease-in-out;
     }
-  
+  }
 }
 
 .greenButton {
-    width: 100%;
-    height: 55px;
-    background: #9DD558;
-    border-radius: 18px;
-    border: 0;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.1s ease-in-out;
+  width: 100%;
+  height: 55px;
+  background: #9dd558;
+  border-radius: 18px;
+  border: 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.1s ease-in-out;
 
-    &:hover {
-      background: lighten(#9DD558, 5%);
-    }
+  &:hover {
+    background: lighten(#9dd558, 5%);
+  }
 
-    &:active {
-      background: darken(#9DD558, 5%);
-    }
+  &:active {
+    background: darken(#9dd558, 5%);
   }
 }
 
@@ -167,13 +203,13 @@ header {
     font-size: 14px;
   }
 
-  .removeBtn{
+  .removeBtn {
     opacity: 0.5;
     cursor: pointer;
     transition: opacity 0.15s ease-in-out;
 
     &:hover {
-      opacity: 1;  
+      opacity: 1;
     }
   }
 }
