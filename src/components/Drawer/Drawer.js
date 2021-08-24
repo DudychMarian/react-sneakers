@@ -1,13 +1,15 @@
 import React from "react";
 import axios from "axios";
 
-import Info from "./Info";
-import AppContext from "../context";
+import Info from "../Info";
+import { useCart } from "../../hooks/useCart";
+
+import styles from "./Drawer.module.scss";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-function Drawer({ onClose, onRemove, items = [] }) {
-  const { cartItems, setCartItems } = React.useContext(AppContext);
+function Drawer({ onClose, onRemove, items = [], opened }) {
+  const { cartItems, setCartItems, totalPrice } = useCart();
   const [orderId, setOrderId] = React.useState(null);
   const [isOrderComplete, setIsOrderComplete] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -39,8 +41,8 @@ function Drawer({ onClose, onRemove, items = [] }) {
   };
 
   return (
-    <div className="overlay">
-      <div className="drawer">
+    <div className={`${styles.overlay} ${opened ? styles.overlayVisible : ""}`}>
+      <div className={styles.drawer}>
         <h2 className="mb-30 d-flex justify-between align-center">
           Cart
           <img
@@ -53,7 +55,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
 
         {items.length > 0 ? (
           <div className="d-flex flex-column flex">
-            <div className="items">
+            <div className="items flex">
               {items.map((obj) => (
                 <div
                   key={obj.id}
@@ -81,12 +83,12 @@ function Drawer({ onClose, onRemove, items = [] }) {
                 <li>
                   <span>Total:</span>
                   <div></div>
-                  <b>214.98 £</b>
+                  <b>{totalPrice} £</b>
                 </li>
                 <li>
                   <span>Tax 5%:</span>
                   <div></div>
-                  <b>10.74 £</b>
+                  <b>{(totalPrice / 100) * 5} £</b>
                 </li>
               </ul>
               <button
